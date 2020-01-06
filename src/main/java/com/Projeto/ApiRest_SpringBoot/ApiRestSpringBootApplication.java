@@ -22,7 +22,9 @@ public class ApiRestSpringBootApplication {
 			repository.deleteAll();
 			LongStream.range(1, 2).mapToObj(i -> {
 				Filmes f = new Filmes();
-				f.setNameFilme("Testando API");
+				f.setNameFilme("O Mágico de Oz");
+				//Filmes f1 = new Filmes();
+				//f1.setNameFilme("O Poderoso Chefão");
 				
 				return f;
 			}).map(v -> repository.save(v)).forEach(System.out::println);

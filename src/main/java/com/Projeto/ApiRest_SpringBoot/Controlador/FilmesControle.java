@@ -18,42 +18,43 @@ import com.Projeto.ApiRest_SpringBoot.Filmes;
 import com.Projeto.ApiRest_SpringBoot.Repositorio.FilmesRepositorio;
 
 import io.swagger.annotations.ApiOperation;
-
+//Receber requisições HTTP
 @RestController
+//URL API
 @RequestMapping(value="/api")
 public class FilmesControle {
-
+//Injeção automaticamente
 	@Autowired
 	FilmesRepositorio filmesRepositorio;
 	
-	//@ApiOperation(value="Retorna uma lista de Filmes")
+	//"Retorna uma lista de Filmes"
 	@GetMapping("/filmes")
 	public List<Filmes> listaFilmes(){
 		return filmesRepositorio.findAll();
 	}
 	
-	//@ApiOperation(value="Retorna um filme unico")
+	//"Retorna um filme unico"
 	@GetMapping("/filmes/{id}")
 	public Filmes listaFilmeUnico(@PathVariable(value="id") long id){
 		return filmesRepositorio.findById(id);
 	}
-	
-	//@ApiOperation(value="Salva um filme")
+	//RequestBody = Conteudo para requisição em formato Json
+	//"Salva um filme"
 	@PostMapping("/filmes")
-	public @Valid Filmes salvaFilme(@RequestBody @Valid Filmes filmes) {
-		return filmesRepositorio.save( filmes);
+	public Filmes salvaFilme(@RequestBody Filmes filmes) {
+		return filmesRepositorio.save(filmes);
 	}
 	
-	//@ApiOperation(value="Deleta um filme")
+	//"Deleta um filme"
 	@DeleteMapping("/filmes")
-	public void deletaFilme(@RequestBody @Valid Filmes filmes) {
-		filmesRepositorio.delete( filmes);
+	public void deletaFilme(@RequestBody Filmes filmes) {
+		filmesRepositorio.delete(filmes);
 	}
 	
-	//@ApiOperation(value="Atualiza um filme")
+	//"Atualiza um filme"
 	@PutMapping("/filmes")
-	public @Valid Filmes atualizaFilme(@RequestBody @Valid Filmes filmes) {
-		return filmesRepositorio.save( filmes);
+	public Filmes atualizaFilme(@RequestBody Filmes filmes) {
+		return filmesRepositorio.save(filmes);
 	}
 	 
 

@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
+//Pertence ao JPA classe será automaticamente mapeada
 @Entity
 @Table(name= "TB_FILMES")
 public class Filmes implements Serializable{
